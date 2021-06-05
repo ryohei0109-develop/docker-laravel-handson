@@ -1,6 +1,8 @@
 # docker-laravel-handson
+----
+●Webサーバについて
 
-●nginxのdefault.confについて
+・nginxのdefault.confについて
 nginx(Webサーバ:9000)にアクセスが来たら、
 アプリケーションサーバ(app)に処理を投げる
 ・docker間通信ができるので、コンテナ名で名前解決してくれる
@@ -11,8 +13,12 @@ nginx(Webサーバ:9000)にアクセスが来たら、
         include fastcgi_params;
     }
 
+・webサーバは特に拡張インストールする必要がないので、
+「nginx」フォルダ以下にDockerfileを作っていない
+
 ----
-●
+●アプリケーションサーバについて
+
 dockerフィルに書くと、ビルドするたびにLaravelがインストールされちゃう(その中のContollerファイル等が無くなる)
 →Laravelは1回インストールだけで良い
 
@@ -27,3 +33,4 @@ dockerフィルに書くと、ビルドするたびにLaravelがインストー�
 - apt-getでインストールしているものは開発中に変更することないからイメージの中にいれておきたい
 
 ----
+●DBサーバについて
