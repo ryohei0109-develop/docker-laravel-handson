@@ -1,6 +1,14 @@
 version: "3.9"
 services:
-  app: # => サービス名は任意
+  app: # アプリケーションサーバ (サービス名は任意)
     build: ./infra/php #docker fileのパスを指定
     volumes:
       - ./backend:/work #ローカルのbackendをworkとしてマウントする
+  web: # Webサーバ
+    image: nginx:1.20-alpine
+    ports: # ホストの8080にアクセスすると、コンテナ側の80にアクセスされるようになる
+      - 8080:80
+    volumes:
+      - ./backend:/work
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    working_dir: /work
