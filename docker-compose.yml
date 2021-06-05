@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  app: # => サービス名は任意
+    build: ./infra/php #docker fileのパスを指定
+    volumes:
+      - ./backend:/work #ローカルのbackendをworkとしてマウントする
